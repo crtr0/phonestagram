@@ -1,0 +1,22 @@
+{
+  "name": "phonestagram",
+  "version": "0.0.0",
+  "description": "Easily text photos to a phone number, apply a filter and have them posted online in realtime",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carter Rabasa",
+  "license": "MIT",
+  "dependencies": {
+    "caman": "^4.1.2",
+    "hapi": "^7.2.0",
+    "joi": "^4.7.0",
+    "level": "^0.18.0",
+    "node-uuid": "^1.4.1",
+    "request": "^2.47.0",
+    "socket.io": "^1.2.0",
+    "twilio": "^1.7.0"
+  }
+}
+
