@@ -1,4 +1,19 @@
 <!doctype html>
 <html>
-Phonestagram
+<body>
+<h1><img src="phonestagram.png" alt="Phonestagram"/></h1>
+<img id="photo" src="" alt="latest photo approved by admin"/>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+var socket = io();
+
+socket.on('connected', function(socket) {
+  console.log("Connected!");
+});
+
+socket.on('new_media', function(url) {
+  document.getElementById("photo").setAttribute("src", url);
+});
+</script>
+</body>
 </html>
