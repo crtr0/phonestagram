@@ -1,14 +1,14 @@
-var os = require('os')
-  , fs = require('fs')
-  , socketio = require('socket.io')
-  , request = require('request')
-  , twilio = require('twilio')
-  , Hapi = require('hapi')
+var Hapi = require('hapi')
   , Joi = require('joi')
   , Boom = require('boom')
   , uuid = require('node-uuid')
-  , level = require('level')
+  , os = require('os')
+  , fs = require('fs')
+  , request = require('request')
   , Caman = require('caman').Caman
+  , twilio = require('twilio')
+  , socketio = require('socket.io')
+  , level = require('level')
   , io;
 
 // valid filters - http://camanjs.com/docs/presets.html
@@ -33,8 +33,10 @@ var filters = [
   "concentrate"
 ];
 
+// handle to the DB (will establish lock)
 var db = level('./mydb', {valueEncoding: "json"});
 
+// client to Twilio REST API
 var client = new twilio.RestClient();
 
 // Create a server with a host and port
@@ -176,6 +178,7 @@ server.route([{
 
 // Start the server
 server.start(function () {
+  // bind socket.io handlers to this server/port
   io = socketio.listen(server.listener);
 
   io.on('connection', function(socket){
