@@ -1,14 +1,14 @@
-var Hapi = require('hapi')
+var os = require('os')
+  , fs = require('fs')
+  , socketio = require('socket.io')
+  , request = require('request')
+  , twilio = require('twilio')
+  , Hapi = require('hapi')
   , Joi = require('joi')
   , Boom = require('boom')
   , uuid = require('node-uuid')
-  , os = require('os')
-  , fs = require('fs')
-  , request = require('request')
-  , Caman = require('caman').Caman
-  , twilio = require('twilio')
-  , socketio = require('socket.io')
   , level = require('level')
+  , Caman = require('caman').Caman
   , io;
 
 // valid filters - http://camanjs.com/docs/presets.html
@@ -80,7 +80,7 @@ var applyFilter = function(mediaUrl, filter, from, to, url_base) {
     // initialize CamanJS
     Caman(original, function () {
       // apply the filter
-      this.resize({width: 600});
+      //this.resize({width: 600});
       this[filter]();
       this.render(function () {
         // save to the file system
